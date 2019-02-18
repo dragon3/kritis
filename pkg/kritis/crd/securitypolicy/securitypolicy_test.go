@@ -295,7 +295,6 @@ func Test_BuildProjectIDs(t *testing.T) {
 			if violations != nil {
 				t.Errorf("got unexpected violations: %v", violations)
 			}
-			p
 		})
 	})
 }
