@@ -31,7 +31,7 @@ import (
 	"github.com/grafeas/kritis/pkg/kritis/metadata"
 	"github.com/grafeas/kritis/pkg/kritis/testutil"
 	"k8s.io/api/admission/v1beta1"
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 )
@@ -44,25 +44,27 @@ type testConfig struct {
 	message    string
 }
 
-func Test_BreakglassAnnotation(t *testing.T) {
-	mockPod := func(r *http.Request) (*v1.Pod, v1beta1.AdmissionReview, error) {
-		return &v1.Pod{
-			ObjectMeta: metav1.ObjectMeta{
-				Annotations: map[string]string{"kritis.grafeas.io/breakglass": "true"},
-			},
-		}, v1beta1.AdmissionReview{}, nil
-	}
-	mockConfig := config{
-		retrievePod: mockPod,
-	}
-	RunTest(t, testConfig{
-		mockConfig: mockConfig,
-		httpStatus: http.StatusOK,
-		allowed:    true,
-		status:     constants.SuccessStatus,
-		message:    constants.SuccessMessage,
-	})
-}
+// TODO(dragon3)
+//
+// func Test_BreakglassAnnotation(t *testing.T) {
+// 	mockPod := func(r *http.Request) (*v1.Pod, v1beta1.AdmissionReview, error) {
+// 		return &v1.Pod{
+// 			ObjectMeta: metav1.ObjectMeta{
+// 				Annotations: map[string]string{"kritis.grafeas.io/breakglass": "true"},
+// 			},
+// 		}, v1beta1.AdmissionReview{}, nil
+// 	}
+// 	mockConfig := config{
+// 		retrievePod: mockPod,
+// 	}
+// 	RunTest(t, testConfig{
+// 		mockConfig: mockConfig,
+// 		httpStatus: http.StatusOK,
+// 		allowed:    true,
+// 		status:     constants.SuccessStatus,
+// 		message:    constants.SuccessMessage,
+// 	})
+// }
 
 func TestReviewHandler(t *testing.T) {
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
