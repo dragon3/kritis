@@ -38,7 +38,7 @@ type ImageSecurityPolicySpec struct {
 	AttestationAuthorityNames        []string                         `json:"attestationAuthorityNames"`
 
 	// TODO(dragon3)
-	BuildProjectIDs []string `json:"buildProjectIDs"`
+	BuiltProjectIDs []string `json:"builtProjectIDs"`
 }
 
 // PackageVulnerabilityRequirements is the requirements for package vulnz for an ImageSecurityPolicy

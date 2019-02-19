@@ -121,14 +121,14 @@ func ValidateImageSecurityPolicy(isp v1beta1.ImageSecurityPolicy, image string, 
 	}
 
 	// TODO(dragon3): check build occurences
-	glog.Infof("isp.Spec.BuildProjectIDs = %v", isp.Spec.BuildProjectIDs)
-	if len(isp.Spec.BuildProjectIDs) > 0 {
+	glog.Infof("isp.Spec.BuiltProjectIDs = %v", isp.Spec.BuiltProjectIDs)
+	if len(isp.Spec.BuiltProjectIDs) > 0 {
 		builds, err := client.Builds(image)
 		if err != nil {
 			return nil, err
 		}
 		hasBuildProjectID := false
-		for _, projectID := range isp.Spec.BuildProjectIDs {
+		for _, projectID := range isp.Spec.BuiltProjectIDs {
 			for _, build := range builds {
 				if build.Provenance.ProjectID == projectID {
 					hasBuildProjectID = true

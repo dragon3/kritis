@@ -210,11 +210,11 @@ func Test_OnlyFixesNotAvailablePassWithWhitelist(t *testing.T) {
 }
 
 // TODO(dragon3)
-func Test_BuildProjectIDs(t *testing.T) {
+func Test_BuiltProjectIDs(t *testing.T) {
 	t.Run("ISP has one buildProjjectIDs", func(t *testing.T) {
 		isp := v1beta1.ImageSecurityPolicy{
 			Spec: v1beta1.ImageSecurityPolicySpec{
-				BuildProjectIDs: []string{"kritis-p-1"},
+				BuiltProjectIDs: []string{"kritis-p-1"},
 			},
 		}
 
@@ -254,7 +254,7 @@ func Test_BuildProjectIDs(t *testing.T) {
 	t.Run("ISP has 2 buildProjjectIDs", func(t *testing.T) {
 		isp := v1beta1.ImageSecurityPolicy{
 			Spec: v1beta1.ImageSecurityPolicySpec{
-				BuildProjectIDs: []string{"kritis-p-1", "kritis-p-2"},
+				BuiltProjectIDs: []string{"kritis-p-1", "kritis-p-2"},
 			},
 		}
 
